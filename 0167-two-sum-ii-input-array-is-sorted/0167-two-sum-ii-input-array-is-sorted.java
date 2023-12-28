@@ -6,8 +6,8 @@ class Solution {
             if(numbers[i]+numbers[j]==target){
                 break;
             }
-            else if(numbers[i]+numbers[j]>target) j--;
-            else i++;
+            else if(numbers[i]+numbers[j]<target) i++;
+            else j--;
         }
         return new int[]{i+1 , j+1};
     }
