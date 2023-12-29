@@ -1,13 +1,12 @@
 class Solution {
     public int majorityElement(int[] nums) {
-        int count=1, majority=Integer.MIN_VALUE;
+        int count=0, majority=0;
         for(int i=0;i<nums.length;i++){
             
-            count += (nums[i]==majority)?+1:-1;
-            
-            if(count==0) {
+            if(count!=0) count += (nums[i]==majority)?+1:-1;
+            else{
                 majority=nums[i];
-                count++;
+                count++;//count=1;
             }
         }
         return majority;
