@@ -7,12 +7,15 @@ class Solution {
         while(left<=right && top<=bottom){
             for(int i=left;i<=right;i++) ans.add(matrix[top][i]);
             top++;
-            if(top>bottom) break;
+            
             for(int i=top;i<=bottom;i++) ans.add(matrix[i][right]);
             right--;
-            if(left>right) break;
+            
+            if(top>bottom) break;           
             for(int i=right;i>=left;i--) ans.add(matrix[bottom][i]);
             bottom--;
+            
+             if(left>right) break;
             for(int i=bottom;i>=top;i--) ans.add(matrix[i][left]);
             left++;
         }
