@@ -14,7 +14,7 @@ class Solution {
             if(maxSum<0) maxSum=0;
             if(minSum>=0) minSum=0;
         }
-        System.out.println("mini:"+mini+" maxi:"+maxi+" total:"+total);
+        
         if(total==mini) return maxi;
         else return Math.max(maxi,total-mini);
 
