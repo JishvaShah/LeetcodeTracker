@@ -6,12 +6,14 @@ class Solution {
         //finding pivot/minimum element
         while(start<=end){
             mid = end + (start - end)/2;
-            if(nums[mid]>=nums[0]) start=mid+1;
-            else if(nums[mid]>nums[mid-1]) end=mid-1;
-            else{
-                pivot=mid;
+            next = (mid+1)%n;
+            prev = (mid+n-1)%n;
+            if(nums[mid]<nums[prev] && nums[mid]<nums[next]){
+                pivot = mid;
                 break;
             }
+            else if(nums[mid]>=nums[0]) start = mid + 1;
+            else end = mid - 1;
         }
         return nums[pivot];
     }
