@@ -7,7 +7,7 @@ class Solution {
         while(start<=end){
             mid = end + (start - end)/2;
             if(nums[mid]>=nums[0]) start=mid+1;
-            else if(nums[mid]<nums[0] && nums[mid]>nums[mid-1]) end=mid-1;
+            else if(nums[mid]>nums[mid-1]) end=mid-1;
             else{
                 pivot=mid;
                 break;
