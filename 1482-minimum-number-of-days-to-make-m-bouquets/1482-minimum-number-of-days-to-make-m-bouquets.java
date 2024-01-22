@@ -2,9 +2,11 @@ class Solution {
 
     public static boolean isValid(int[] bloomDay, int m, int k, int mid){
         int totalCount=0/*m*/,count=0/*k*/;
+        
         for(int i=0;i<bloomDay.length;i++){
             if(bloomDay[i]<=mid) count++;
             else count=0;
+            
             if(count==k) {
                 totalCount++;
                 count=0;
@@ -14,12 +16,12 @@ class Solution {
     }
 
     public int minDays(int[] bloomDay, int m, int k) {
-        int low=Integer.MAX_VALUE;
+        int low=1;
         int max=Integer.MIN_VALUE;
         for(int i=0;i<bloomDay.length;i++){
-            low=Math.min(low,bloomDay[i]);
             max=Math.max(max,bloomDay[i]);
         }
+        
         int high=max; 
         while(low<=high){
             int mid=low+(high-low)/2;
