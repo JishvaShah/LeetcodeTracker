@@ -1,34 +1,42 @@
 class Solution {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        int[] nums3 = new int[nums1.length+nums2.length];
-        int k=0,i=0,j=0;
+        
+        int cnt=0,i=0,j=0;
+        int index=(nums1.length+nums2.length)/2;
+        int sInd=index, fInd=index-1, fVal=-1, sVal=-1;
+        
         while(i<nums1.length && j<nums2.length){
             if(nums1[i]<=nums2[j]){
-                nums3[k]=nums1[i];
-                k++;
+                if(fInd==cnt) fVal=nums1[i];
+                if(sInd==cnt) sVal=nums1[i];
+                cnt++;
                 i++;
             }
             else{
-                nums3[k]=nums2[j];
-                k++;
+                if(fInd==cnt) fVal=nums2[j];
+                if(sInd==cnt) sVal=nums2[j];
+                cnt++;
                 j++;
             }
         }
         while(i<nums1.length){
-            nums3[k]=nums1[i];
-            k++;
+            if(fInd==cnt) fVal=nums1[i];
+            if(sInd==cnt) sVal=nums1[i];
+            cnt++;
             i++;
         }
         while(j<nums2.length){
-            nums3[k]=nums2[j];
-            k++;
+            if(fInd==cnt) fVal=nums2[j];
+            if(sInd==cnt) sVal=nums2[j];
+            cnt++;
             j++;
         }
-        double median = 0;
-        int index=(nums1.length+nums2.length)/2;
         
-        if((nums1.length+nums2.length)%2==0) median=(nums3[index-1]+nums3[index])/2.0;
-        else median = (double) nums3[index];
+        double median = 0;
+        //even length
+        if((nums1.length+nums2.length)%2==0) median=(fVal+sVal)/2.0;
+        //odd length
+        else median = (double) sVal;
         
         return median;
     }
