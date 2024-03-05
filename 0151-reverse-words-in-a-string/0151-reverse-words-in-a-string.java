@@ -12,10 +12,10 @@ class Solution {
             while(i>-1 && s.charAt(i)!=' '){
                 i--;   
             }
-            start=i;
+            start=i+1;
             
-            if(start<end)
-                sb.append(s.substring(i+1,end+1)+" ");
+            if(start<=end)
+                sb.append(s.substring(start,end+1)+" ");
         }
         
         if(sb.length() > 0) sb.setLength(sb.length() - 1);
