@@ -9,12 +9,12 @@ class Solution {
         hm.put('D', 500);
         hm.put('M', 1000);
         
-        int val=0, prev=hm.get(s.charAt(0));
+        int val=0;
         for(int i=0;i<s.length();i++){
-            int curr = hm.get(s.charAt(i));
-            if(curr<=prev) val+=curr;
-            else val+=curr-2*prev;
-            prev = curr; 
+            if(i < s.length() - 1 && hm.get(s.charAt(i))<hm.get(s.charAt(i+1))) 
+                val-=hm.get(s.charAt(i));
+            else 
+                val+=hm.get(s.charAt(i));
         }
         
         return val;
