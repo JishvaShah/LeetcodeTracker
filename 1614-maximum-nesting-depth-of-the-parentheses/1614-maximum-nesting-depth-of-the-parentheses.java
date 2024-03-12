@@ -7,13 +7,11 @@ class Solution {
         for(int i=0;i<s.length();i++){            
             if ((s.charAt(i)=='(')){
                 count++;
-                if(count>=1) flag=false;
             }
             else if ((s.charAt(i)==')')){
                 count--;
-                if(count>=0 && !flag)
-                    if(count+1>depth) depth=count+1;
-                    flag=true;
+                if(count+1>depth)
+                    depth=count+1;
             }    
         }
         return depth==Integer.MIN_VALUE?0:depth;
