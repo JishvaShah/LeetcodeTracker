@@ -18,20 +18,18 @@ class Solution {
         }
         
         List<Character>[] buckets = new ArrayList[s.length()+1];
-        for (int i = 0; i < buckets.length; i++) {
-            buckets[i] = new ArrayList<>(); 
-        }
-        
         for (char key : hm.keySet()) {
             int frequency = hm.get(key);
+            if (buckets[frequency] == null) buckets[frequency] = new ArrayList<>();
             buckets[frequency].add(key);
         }
        
         StringBuilder sb = new StringBuilder();
-        for(int i=s.length();i>=0;i--){
-             for (char ch : buckets[i]) {
-                sb.append(getS(ch, i));
-            }   
+        for(int i=buckets.length-1;i>=0;i--){
+            if (buckets[i] != null)
+                 for (char ch : buckets[i]) {
+                    sb.append(getS(ch, i));
+                }   
         }
         System.out.println(sb.toString());
         return sb.toString();
