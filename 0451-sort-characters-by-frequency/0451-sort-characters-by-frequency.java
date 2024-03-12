@@ -1,10 +1,8 @@
 class Solution {
-    public static String getS(char c, int i){
+    public static String getS(char c, int index){
         StringBuilder sb = new StringBuilder();
-        while(i>0){
+        for(int i=index;i>0;i--)
             sb.append(c);
-            i--;
-        }
         return sb.toString();
     }
     
@@ -29,11 +27,10 @@ class Solution {
         StringBuilder sb = new StringBuilder();
         for(int i=buckets.length-1;i>0;i--){
             if (buckets[i] != null)
-                 for (char ch : buckets[i]) {
+                 for (char ch : buckets[i])
                     sb.append(getS(ch, i));
-                }   
         }
-        System.out.println(sb.toString());
+        
         return sb.toString();
     }
 }
