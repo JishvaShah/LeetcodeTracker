@@ -10,42 +10,19 @@
  */
 class Solution {
     public ListNode oddEvenList(ListNode head) {
-        if(head==null || head.next==null) return head;
+        if(head==null || head.next==null || head.next.next==null) return head;
         
-        int count=0;
-        ListNode l1head=null;
-        ListNode l2head=null;
-        ListNode l1dummy=null;
-        ListNode l2dummy=null;
+        ListNode l1head=head;
+        ListNode l2head=head.next;
+        ListNode l2start=head.next;
         
-        while(head!=null){
-            if(count%2==0){
-                ListNode newNode=new ListNode(head.val);
-                if(l1dummy==null){
-                    l1dummy=newNode;
-                    l1head = l1dummy;
-                } 
-                else{
-                    l1dummy.next=newNode;
-                    l1dummy=newNode;
-                }
-                head=head.next;
-            }
-            else{
-                ListNode newNode=new ListNode(head.val);
-                if(l2dummy==null){
-                    l2dummy=newNode;
-                    l2head = l2dummy;
-                } 
-                else{
-                    l2dummy.next=newNode;
-                    l2dummy=newNode;
-                }
-                head=head.next;
-            }
-            count++;
+        while(l1head.next!=null && l2head.next!=null){
+            l1head.next=l2head.next;
+            l1head=l1head.next;
+            l2head.next=l1head.next;
+            l2head=l2head.next;
         }
-        l1dummy.next=l2head;
-        return l1head;
+        l1head.next=l2start;
+        return head;
     }
 }
