@@ -15,18 +15,16 @@ class Solution {
         while(h1!=null && h2!=null){
             if(h1.val<h2.val){
                 res.next=h1;
-                res=h1;
                 h1=h1.next;
             }
             else {
                 res.next=h2;
-                res=h2;
                 h2=h2.next;
             }
-            // res=res.next;
+            res=res.next;
         }
         if(h1!=null) res.next=h1;
-        else res.next=h2;
+        if(h2!=null) res.next=h2;
         
         return dummyNode.next;
     }
